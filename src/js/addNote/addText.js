@@ -1,4 +1,4 @@
-import { getGeolocation } from './getGeolocation';
+import { getGeolocation } from '../geolocation/getGeolocation';
 import { createTextWidget} from './createTextWidget';
 
 const textInput = document.querySelector('.text-input');

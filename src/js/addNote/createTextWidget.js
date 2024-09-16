@@ -1,4 +1,4 @@
-import { formatDate } from './formDate';
+import { formatDate } from '../formDate';
 
 const mediaContent = document.querySelector('.media-content');
 const textInput = document.querySelector('.text-input');

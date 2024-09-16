@@ -1,4 +1,4 @@
-import { validateCoordinates } from '../validation';
+import { validateCoordinates } from '../geolocation/validation';
 
 describe('validateCoordinates', () => {
     test.each([
