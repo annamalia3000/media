@@ -21,10 +21,17 @@ export function createVideoWidget(latitude, longitude, videoId) {
     videoWidget.appendChild(videoPlay);
     videoWidget.appendChild(userGeo);
 
+    const videoElement = document.querySelector(`video[data-video-id="${videoId}"]`);
+
     videoPlay.addEventListener('click', () => {
-        const videoElement = document.querySelector(`video[data-video-id="${videoId}"]`);
         videoElement.play();
         videoWidget.style.display = 'none';
+        videoElement.style.display = 'block';
+    });
+
+    videoElement.addEventListener('ended', () => {
+        videoWidget.style.display = 'flex';  
+        videoElement.style.display = 'none'; 
     });
 
     videoWidget.style.display = 'flex';
