@@ -177,7 +177,7 @@ body {
 
 .media-video {
     width: 100%;
-    height: 200px;
+    height: 250px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -187,9 +187,10 @@ body {
 }
 
 .video-content {
-    height: 200px;
+    height: 250px;
     display: none;
-
+    width: 100%;
+    object-fit: cover;
 }
 
 .video-widget {
