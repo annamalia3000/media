@@ -18,7 +18,7 @@ export class Video {
         this.isRecordingCancelled = false;
     }
 
-    initialize() {
+    init() {
         this.videoButton.addEventListener('click', this.startRecording.bind(this));
     }
 
@@ -71,7 +71,7 @@ export class Video {
                 this.createRecordedVideo(this.videoURL);   
                 
                 this.chunks = [];
-        
+                switchBtnMode();
             });
     
             this.recorder.start();
@@ -92,8 +92,6 @@ export class Video {
         if (this.recorder && this.recorder.state === 'recording') {
             this.recorder.stop(); 
         }
-    
-        switchBtnMode(); 
     }
 
     handleCancelClick() {
@@ -106,8 +104,6 @@ export class Video {
         if (this.videoMedia) {
             this.videoMedia.remove();
         }
-    
-        switchBtnMode(); 
     }
 
     createVideoPlayer() {
@@ -151,16 +147,16 @@ export class Video {
         videoDate.classList.add('date');
         videoDate.textContent = formatDate(new Date());
     
-        const videoPlay = document.createElement('button');
-        videoPlay.classList.add('video-play-btn');
-        videoPlay.innerHTML = `<i class="fa fa-play"></i>`;
+        const playBtn = document.createElement('button');
+        playBtn.classList.add('play-btn');
+        playBtn.innerHTML = `<i class="fa fa-play"></i>`;
     
         const userGeo = document.createElement('div');
         userGeo.classList.add('user-geolocation');
         userGeo.textContent = `[${latitude}, ${longitude}]`;
     
         videoWidget.appendChild(videoDate);
-        videoWidget.appendChild(videoPlay);
+        videoWidget.appendChild(playBtn);
         videoWidget.appendChild(userGeo);
     
         this.setupVideoPlayback(videoId, videoWidget);
@@ -174,20 +170,19 @@ export class Video {
         if (this.isRecordingCancelled) {
             return; 
         }
-        
+
         const videoElement = document.querySelector(`video[data-video-id="${videoId}"]`);
     
-        videoWidget.querySelector('.video-play-btn').addEventListener('click', () => {
+        videoWidget.querySelector('.play-btn').addEventListener('click', () => {
             videoElement.play();
             videoWidget.style.display = 'none';
             videoElement.style.display = 'block';
-        });
-    
-        videoElement.addEventListener('ended', () => {
-            videoWidget.style.display = 'flex';  
-            videoElement.style.display = 'none'; 
-        });
 
+            videoElement.addEventListener('ended', () => {
+                videoWidget.style.display = 'flex';  
+                videoElement.style.display = 'none'; 
+            });
+        });
     }
 }
 

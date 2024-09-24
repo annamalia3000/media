@@ -1,10 +1,13 @@
 import  { Text } from './Text';
 import  { Video } from './Video';
-import './addAudio/addAudio';
+import  { Audio } from './Audio';
 
 const mediaText = new Text('.media-content');
 const mediaVideo = new Video('.media-content');
+const mediaAudio = new Audio('.media-content');
 
-mediaText.initialize();
+mediaText.init();
 
-mediaVideo.initialize();
+mediaVideo.init();
+
+mediaAudio.init();

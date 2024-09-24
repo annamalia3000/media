@@ -7,7 +7,7 @@ export class Text {
         this.textInput = document.querySelector('.text-input');
     }
 
-    initialize() {
+    init() {
         this.textInput.addEventListener('keydown', (event) => {
             if (event.key === 'Enter' && this.textInput.value.trim() !== '') {
                 event.preventDefault();  
